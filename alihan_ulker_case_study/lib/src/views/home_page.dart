@@ -86,6 +86,7 @@ class HomePageState extends State<HomePage> {
                                   color: AppColors.white,
                                 ),
                                 onPressed: () {
+                                  //Yapilan aramayi ve bloc'u temizlemek icin kullanilir.
                                   _searchController.clear();
                                   BlocProvider.of<BooksBloc>(context)
                                       .add(ClearSearchEvent());
@@ -242,6 +243,7 @@ class HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  //Favorilere alinan kitaplari yuklemek icin
   void loadFavorites() async {
     var box = await Hive.openBox('favoriteBooks');
     var keysSet = Set<String>.from(box.keys.map((key) {
@@ -252,6 +254,7 @@ class HomePageState extends State<HomePage> {
     });
   }
 
+  //Kitabi favorilere eklemek icin
   Future toggleFavoriteBook(Map<String, dynamic> bookData) async {
     final bookId = bookData['id'];
 
@@ -263,6 +266,7 @@ class HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  //Kitabi favorilerden kaldirmak icin
   Future removeFromFavorites(String bookId) async {
     if (favoriteBookIds.contains(bookId)) {
       await favoriteBooksBox.delete(bookId);
@@ -271,12 +275,14 @@ class HomePageState extends State<HomePage> {
     }
   }
 
+  //Favoriye alinan kitabin border rengini degistirmek icin
   Color getBorderColor(String id) {
     return favoriteBookIds.contains(id)
         ? AppColors.favoriteBorderColor
         : AppColors.borderColor;
   }
 
+  //Arama temizleme butonunun kontrolu icin
   void _onSearchChanged() {
     if (_searchController.text.isNotEmpty && !_showClearButton) {
       setState(() {

@@ -1,6 +1,7 @@
 import 'package:alihan_ulker_case_study/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
+//HomePage ve MyFavoriteBooksPage sayfalarinda ortak olarak kullanilir.
 class BookListItem extends StatelessWidget {
   final String? title;
   final String? subtitle;
@@ -41,6 +42,7 @@ class BookListItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            //Kitap kapagi eksik ise default olarak belirlenen resmi gosterir.
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: thumbnailUrl != null
@@ -55,8 +57,9 @@ class BookListItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    //Kitap ismi eksik ise Bilinmiyor yazacak.
                     Text(
-                      title!,
+                      title ?? "Bilinmiyor",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(

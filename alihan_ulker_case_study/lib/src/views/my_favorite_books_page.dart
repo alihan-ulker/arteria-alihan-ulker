@@ -74,6 +74,7 @@ class MyFavoriteBooksPageState extends State<MyFavoriteBooksPage> {
               itemBuilder: (context, index) {
                 final book = favoriteBooks[index];
                 return GestureDetector(
+                  //Kitap uzerine uzun basildiginda silmek icin cikan uyari
                   onLongPress: () async {
                     showDialog(
                       context: context,
@@ -117,6 +118,7 @@ class MyFavoriteBooksPageState extends State<MyFavoriteBooksPage> {
     );
   }
 
+  //Favoriler kismindan bir kitap silmek icin
   Future deleteFavoriteBook(String? bookId, int index) async {
     var box = await Hive.openBox('favoriteBooks');
     if (bookId != null) {
@@ -128,6 +130,7 @@ class MyFavoriteBooksPageState extends State<MyFavoriteBooksPage> {
     }
   }
 
+  //Favoriler kisminda tum kitaplari silmek icin
   Future deleteAllFavorites() async {
     Box box;
     if (Hive.isBoxOpen('favoriteBooks')) {
@@ -139,6 +142,7 @@ class MyFavoriteBooksPageState extends State<MyFavoriteBooksPage> {
     loadFavorites();
   }
 
+  //Tum kitaplari favoriler kismindan silmeden once cikan uyari
   Future confirmDeleteAll() async {
     bool confirm = await showDialog(
           context: context,
