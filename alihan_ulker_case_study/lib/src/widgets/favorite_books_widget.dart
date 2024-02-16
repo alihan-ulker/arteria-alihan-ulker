@@ -118,7 +118,7 @@ class BookListItem extends StatelessWidget {
                                 "Published at: $publishDate",
                                 style: const TextStyle(
                                   color: AppColors.white,
-                                  fontSize: 12,
+                                  fontSize: 10,
                                 ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -134,7 +134,7 @@ class BookListItem extends StatelessWidget {
                             "Pages: $pageCount",
                             style: const TextStyle(
                               color: AppColors.white,
-                              fontSize: 12,
+                              fontSize: 10,
                             ),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
